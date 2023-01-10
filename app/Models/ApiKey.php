@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class ApiKey extends Model
 {
     use HasFactory;
+
+    protected $fillable = ["service_id" , "key"];
 }

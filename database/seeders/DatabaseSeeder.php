@@ -3,6 +3,10 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Admin;
+use App\Models\ApiKey;
+use App\Models\Service;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,11 +18,31 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $adminPass = "admin";
+
+
+        $admin = Admin::create([
+
+            "email" =>  "admin@root.com" ,
+            "password" => bcrypt($adminPass) 
+        ]);
+
+
+        $qualityScore = Service::create([
+            "name" => "QualityScore" ,
+            "status" => true
+        ]);
+
+
+        ApiKey::create([
+            "service_id" => $qualityScore->id,
+            "key" => "BEZeoWi9a1oARP6oh7B0gLEXwskRSrlK"
+        ]);
+
+
+        echo "  Service {$qualityScore->name} Created Successfully".PHP_EOL;
+        echo "  Api key {$qualityScore->name} Generated Successfully".PHP_EOL;
+        echo "  Admin email : {$admin->email} , password : $adminPass".PHP_EOL;
     }
 }
