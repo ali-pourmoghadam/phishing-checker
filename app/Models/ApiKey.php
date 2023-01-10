@@ -10,4 +10,11 @@ class ApiKey extends Model
     use HasFactory;
 
     protected $fillable = ["service_id" , "key"];
+
+
+    public function service()
+    {
+        return $this->belongsTo(Service::class);
+    }
+    
 }

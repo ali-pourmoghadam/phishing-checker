@@ -13,6 +13,12 @@ class QualityScoreService implements PhishingContract{
        
     }
 
+
+    public function intialize(){
+            
+    }
+
+
     public function urlCheck()
     {
         

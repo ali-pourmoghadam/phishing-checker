@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Log extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        "service_id" , 
+        "requester_ip",
+        "url",
+        "result"
+    ];
+
+    public function service()
+    {
+        return $this->belongsTo(Service::class);
+    }
 }

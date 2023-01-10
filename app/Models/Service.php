@@ -10,4 +10,15 @@ class Service extends Model
     use HasFactory;
 
     protected $fillable = ["name" , "status"];
+
+
+    public function apiKey()
+    {
+        return  $this->hasMany(ApiKey::class);
+    }
+
+    public function log()
+    {
+        return  $this->hasMany(Log::class);
+    }
 }
