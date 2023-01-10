@@ -14,7 +14,7 @@ class Service extends Model
 
     public function apiKey()
     {
-        return  $this->hasMany(ApiKey::class);
+        return  $this->hasOne(ApiKey::class);
     }
 
     public function log()
