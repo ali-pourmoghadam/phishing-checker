@@ -58,7 +58,7 @@
            
                 window.location.replace("http://localhost:8000/adminpanel")
 
-            }else{
+            }else if(this.status == 401){
 
                 let error =  document.querySelector("#error");
                 
