@@ -10,7 +10,7 @@ let services = ref([])
 let url = ref("")
 let choose = ref(1)
 let result = ref({})
-
+let spiner =  ref(true)
 
 
 defineProps({
@@ -34,7 +34,7 @@ onMounted(()=>{
 
             services.value =  response.data.data;
 
-
+            spiner.value = false
             
          })
          .catch((error) => {
@@ -52,7 +52,7 @@ onMounted(()=>{
 function check(){
 
 
-
+    spiner.value = true 
 
 
     axios.post(domain +"api/v1/qualityscore" , 
@@ -72,14 +72,15 @@ function check(){
 
         })
          .then((response) => {
-
-            result.value = response.data
-
-  
+             
+             result.value = response.data
+             
+             spiner.value = false
 
          })
          .catch((error) => {
 
+            spiner.value =false
 
             Swal.fire({
             icon: 'error',
@@ -180,7 +181,13 @@ function check(){
 
             </div>
 
+
      
     </section>
+
+
+
+    <div v-if="spiner"  class="bg-gray-600  opacity-25 w-full h-full absolute top-0 left-0">
+    </div>
 
 </template>
