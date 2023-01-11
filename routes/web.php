@@ -37,6 +37,8 @@ Route::group(["controller" => AdminController::class] ,function(){
 
     Route::get('/adminpanel ', 'panel');
 
+    Route::get('/adminlogout ', 'logout');
+
     });
 
 
