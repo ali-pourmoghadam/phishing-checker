@@ -22,12 +22,15 @@
             <div class="w-4/6 block mx-auto mt-5 text-white">
                 <label class="block">password :</label>
                 <input id="password" type="password" class=" rounded-md block mt-2 mx-auto text-black" type="text">
+
+                <p id="error" class="mt-4 text-red-500 text-xs text-center"></p>
             </div>
 
             <button onclick="login()" class="rounded-2xl block mx-auto w-28 h-8 mt-9 text-sm font-semibold bg-slate-50 text-black">login</button>
         </div>
     </div>
     
+
 </body>
 
 
@@ -55,6 +58,11 @@
            
                 window.location.replace("http://localhost:8000/adminpanel")
 
+            }else{
+
+                let error =  document.querySelector("#error");
+                
+                error.innerHTML= "username or password is wrong!";
             }
         };
 

@@ -18,7 +18,7 @@
             </a>
         </div>
 
-        <h1 class="text-center text-lg">Admin Log Report</h1>
+        <h1 class="text-center text-lg">Users Logs Report</h1>
 
         <div class="w-4/6 block mx-auto mt-10">
 
