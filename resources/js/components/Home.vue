@@ -7,6 +7,7 @@ const domain = "http://localhost:8000/";
 
 let services = ref([])
 let url = ref("")
+let choose = ref(1)
 let result = ref({})
 
 defineProps({
@@ -51,7 +52,8 @@ function check(){
     axios.post(domain +"api/v1/qualityscore" , 
     
             {
-                url : url.value
+                url : url.value ,
+                service_id : choose.value
             }
 
          , {
@@ -106,7 +108,7 @@ function check(){
         >
       
 
-        <select class="mt-5 w-2/6 rounded block text-xs text-black mx-auto " v-if="services">
+        <select v-model="choose" class="mt-5 w-2/6 rounded block text-xs text-black mx-auto " v-if="services">
 
 
 
@@ -127,11 +129,11 @@ function check(){
     </section>
 
 
-    <section class="w-3/6 block mx-auto" v-if="result">
+    <section class="w-3/6 block mx-auto" v-if="result.message">
 
         <h1 class="text-lg  font-semibold">Query result :</h1>
 
-            <div class="ml-10 mt-5">
+            <div class="ml-10 mt-5 font-bold">
                 <div class="mt-2">
                     message : {{ result.message }}
                 </div>
