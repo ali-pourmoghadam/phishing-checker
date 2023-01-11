@@ -24,6 +24,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::group(["controller" => PhishingController::class] , function(){
 
     Route::get('/services',  'services');
+    
+    Route::post('/qualityscore',  'qualityScore');
+
 
 
 });

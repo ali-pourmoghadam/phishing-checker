@@ -26,7 +26,9 @@ class QualityScoreService implements PhishingContract{
     {
         $apiKey = $this->readApiKey();
         
-        return  Http::get("https://ipqualityscore.com/api/json/url/$apiKey/$url")->json();
+        $url = urlencode($url);
+
+        return Http::get("https://ipqualityscore.com/api/json/url/$apiKey/$url")->json();
     }
 
 

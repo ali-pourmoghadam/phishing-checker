@@ -24,7 +24,7 @@ class PhishingRequest extends FormRequest
     public function rules()
     {
         return [
-            "url" => "required|string|regex:/^http:\/\/\w+(\.\w+)*(:[0-9]+)?\/?$/"
+            "url" => "required|regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/"
         ];
     }
 }
