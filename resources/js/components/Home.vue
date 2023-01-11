@@ -1,6 +1,7 @@
 <script setup>
 import { reactive, ref } from "@vue/reactivity";
 import { onMounted } from "vue";
+import Swal from "sweetalert2"
 
 
 const domain = "http://localhost:8000/";
@@ -9,6 +10,8 @@ let services = ref([])
 let url = ref("")
 let choose = ref(1)
 let result = ref({})
+
+
 
 defineProps({
     theme : Boolean
@@ -31,7 +34,8 @@ onMounted(()=>{
 
             services.value =  response.data.data;
 
-            console.log(services)
+            console.log(loader.value + " init")
+
             
          })
          .catch((error) => {
@@ -47,6 +51,9 @@ onMounted(()=>{
 
 
 function check(){
+
+
+
 
 
     axios.post(domain +"api/v1/qualityscore" , 
@@ -69,10 +76,19 @@ function check(){
 
             result.value = response.data
 
+            console.log("after : "+loader.value)
+
          })
          .catch((error) => {
-        
-            console.log(error);
+
+
+            Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: error.response.data.message
+
+            })
+
 
          });
 
@@ -119,6 +135,7 @@ function check(){
 
         <button 
                 @click="check()"
+                
                 :class="{
                     'rounded-2xl block mx-auto w-28 h-8 mt-9 text-sm font-semibold' : true,
                     'bg-slate-800 text-white' : theme == true ,
@@ -129,7 +146,7 @@ function check(){
     </section>
 
 
-    <section class="w-3/6 block mx-auto" v-if="result.message">
+    <section class="w-3/6 block mx-auto" v-if="result.message.length ">
 
         <h1 class="text-lg  font-semibold">Query result :</h1>
 
@@ -163,6 +180,7 @@ function check(){
                 </div>
 
             </div>
+
      
     </section>
 
