@@ -4,14 +4,17 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminloginRequest;
+use App\Services\LogService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
-    public function panel()
+    public function panel(LogService $service)
     {
-        return view("admin.panel");
+        $logs = $service->readLogs();
+
+        return view("admin.panel" , compact("logs"));
     }
 
     
