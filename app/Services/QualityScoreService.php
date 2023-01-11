@@ -22,7 +22,7 @@ class QualityScoreService implements PhishingContract{
 
 
 
-    public function urlCheck(Http $httpRequest,string $url)
+    public function urlCheck(string $url)
     {
         $apiKey = $this->readApiKey();
         

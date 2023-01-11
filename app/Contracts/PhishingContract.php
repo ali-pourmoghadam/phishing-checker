@@ -8,6 +8,6 @@ interface PhishingContract {
 
     public function __construct();
 
-    public function urlCheck(Http $httpRequest);
+    public function urlCheck(string $url);
 
 }
