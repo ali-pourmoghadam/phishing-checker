@@ -17,4 +17,12 @@ Route::get('/{any}', function () {
     
     return view('welcome');
     
-})->where("any" , ".*");
+})->where("any" , "^(?!admin).*");
+
+
+
+Route::get('/adminlogin ', function () {
+    
+    return "welcome";
+    
+});

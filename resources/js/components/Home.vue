@@ -34,7 +34,6 @@ onMounted(()=>{
 
             services.value =  response.data.data;
 
-            console.log(loader.value + " init")
 
             
          })
@@ -76,7 +75,7 @@ function check(){
 
             result.value = response.data
 
-            console.log("after : "+loader.value)
+  
 
          })
          .catch((error) => {
@@ -146,7 +145,7 @@ function check(){
     </section>
 
 
-    <section class="w-3/6 block mx-auto" v-if="result.message.length ">
+    <section class="w-3/6 block mx-auto" v-if="result.message ">
 
         <h1 class="text-lg  font-semibold">Query result :</h1>
 
