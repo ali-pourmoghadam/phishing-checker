@@ -16,6 +16,8 @@ class Log extends Model
         "result"
     ];
 
+    protected $with = ["service"];
+
     public function service()
     {
         return $this->belongsTo(Service::class);
