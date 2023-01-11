@@ -27,7 +27,5 @@ Route::group(["controller" => PhishingController::class] , function(){
     
     Route::post('/qualityscore',  'qualityScore');
 
-
-
 });
 

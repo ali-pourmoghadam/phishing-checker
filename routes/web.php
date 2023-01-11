@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Web\AdminController;
+use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,9 +22,22 @@ Route::get('/{any}', function () {
 })->where("any" , "^(?!admin).*");
 
 
+Route::group(["controller" => AdminController::class] ,function(){
 
-Route::get('/adminlogin ', function () {
+
+    Route::group(["middleware" => ["guest:admin"]] , function(){
+
+        Route::get('/adminlogin ', 'loginShow');
+
+        Route::post('/adminlogin ', 'login');
+
+    });
     
-    return "welcome";
-    
+    Route::group(["middleware" => AdminMiddleware::class] , function(){
+
+    Route::get('/adminpanel ', 'panel');
+
+    });
+
+
 });
