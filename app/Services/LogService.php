@@ -27,7 +27,7 @@ class LogService{
 
     public function readLogs()
     {
-        return Log::paginate();
+        return Log::paginate(10);
     }
 
 

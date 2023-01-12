@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Panel</title>
 
-    @vite('resources/js/admin.js')
+    <script src="https://cdn.tailwindcss.com"></script>
+
 </head>
 <body class="h-full">
     
@@ -39,7 +40,7 @@
 
                     <tr>
 
-                        <td>{{$loop->index +1}} </td>
+                        <td>{{$log->id}} </td>
                         <td>{{$log->service->name}}</td>
                         <td>{{$log->requester_ip}}</td>
                         <td>{{$log->url}}</td>
@@ -54,7 +55,12 @@
             </tbody>
             </table>
 
+            <div class="mt-10 w-3/6 block mx-auto">
+                {{ $logs->links()}}
+            </div>
+
         </div>
+        
     </div>
   
 </body>
