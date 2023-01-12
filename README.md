@@ -20,6 +20,12 @@
 
 10.npm run dev
 
+# Web Routes :
+
+1. /
+2. /about 
+3. /adminlogin 
+4. /adminpanel
 
 # Erd Chart : 
 
